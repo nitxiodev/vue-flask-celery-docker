@@ -1,0 +1,30 @@
+- name: Download the entire project
+  git: repo='' dest=/tmp/repo
+
+- name: Stat to countdown_backend
+  stat: path=/opt/countdown_backend
+  register: backend
+
+- name: Stat to frontend
+  stat: path=/opt/countdown-frontend
+  register: frontend
+
+- name: Move backend to /opt
+  shell: mv /tmp/repo/countdown_backend /opt/
+  when: backend.stat.exists == False
+
+- name: Move frontend to /opt
+  shell: mv /tmp/repo/countdown-frontend /opt/
+  when: frontend.stat.exists == False
+
+- name: Add dockerfiles to Virtual Machine
+  copy: src={{item}} dest=/opt/ owner="{{ansible_env.SUDO_USER}}" group="{{ansible_env.SUDO_USER}}" mode=0600
+  with_items:
+    - celery
+    - flask_server
+    - flask_socketio_server
+    - web
+    - docker-compose.yml
+
+- name: Install app on virtual machine using docker-compose
+  shell: cd /opt && docker-compose up -d

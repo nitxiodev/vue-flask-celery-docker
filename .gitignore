@@ -1,0 +1,4 @@
+.idea
+*.pyc
+countdown-frontend/README.md
+.vagrant
