@@ -1,5 +1,5 @@
 - name: Download the entire project
-  git: repo='' dest=/tmp/repo
+  git: repo='git@github.com:nitxiodev/vue-flask-celery-docker.git' dest=/tmp/repo
 
 - name: Stat to countdown_backend
   stat: path=/opt/countdown_backend
