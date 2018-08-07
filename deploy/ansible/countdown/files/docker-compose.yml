@@ -53,6 +53,7 @@ services:
       - "traefik.frontend.rule=Host:frontend.docker"
       - "traefik.backend.loadbalancer.method=drr"
     depends_on:
+     - flaskserver
 
   socketio:
    build:

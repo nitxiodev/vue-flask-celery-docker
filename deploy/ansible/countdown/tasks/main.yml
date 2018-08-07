@@ -1,5 +1,5 @@
 - name: Download the entire project
-  git: repo='git@github.com:nitxiodev/vue-flask-celery-docker.git' dest=/tmp/repo
+  git: repo='https://github.com/nitxiodev/vue-flask-celery-docker.git' dest=/tmp/repo
 
 - name: Stat to countdown_backend
   stat: path=/opt/countdown_backend
@@ -16,6 +16,9 @@
 - name: Move frontend to /opt
   shell: mv /tmp/repo/countdown-frontend /opt/
   when: frontend.stat.exists == False
+
+- name: Clean tmp/repo directory
+  file: state=absent path=/tmp/repo
 
 - name: Add dockerfiles to Virtual Machine
   copy: src={{item}} dest=/opt/ owner="{{ansible_env.SUDO_USER}}" group="{{ansible_env.SUDO_USER}}" mode=0600
