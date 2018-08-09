@@ -7,13 +7,14 @@ Dockerized client-server application of Letters &amp; Numbers Game using Flask, 
 - **Celery** to delegate the execution of heavy tasks, with redis backend (solution of numbers part).
 - **Flask-SocketIO** to notify the client ASAP of the solution with no polling (with GEvent to allow async requests).
 - **Vue** to build the frontend (with Vue-Router, Vuex, Vue-socketio, axios, i18n, etc).
+  - Multilanguage support: english and spanish.
 - **Docker** to deploy each service on the private cloud.
 - **Traeffik** as load balancer of dockerized services.
 
 # Architecture
 
 <p align="center">
-  <img src="./img/countdown_cloud.png" width="60%">
+  <img src="./img/countdown_cloud.svg" width="70%">
 </p>
 
 The image shows the proposed architecture. The architecture expose several public endopoints:
@@ -43,13 +44,13 @@ Endpoints exposed by traeffik require a domain name, so the IP address of the ma
 Once you have configured hosts, open Firefox or Chrome/Chromium browser and type on a tab/window: `http://frontend.docker`. If all went well, you should see the following image:
 
 <p align="center">
-  <img src="./img/frontpage.png" width="60%">
+  <img src="./img/frontpage.png" width="90%">
 </p>
 
 Thus, if you press the *numbers* button, you will be redirected to this view:
 
 <p align="center">
-  <img src="./img/mainview.png" width="60%">
+  <img src="./img/mainview.png" width="90%">
 </p>
 
 In this view, you can input numbers to search for the target number and send the request to the server, which will respond in one of the following ways:
