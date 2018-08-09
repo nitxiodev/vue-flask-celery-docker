@@ -56,3 +56,6 @@ Thus, if you press the *numbers* button, you will be redirected to this view:
 In this view, you can input numbers to search for the target number and send the request to the server, which will respond in one of the following ways:
 - If websocket service is **on**, then will send a json message through websockets to the client.
 - If websocket service is **off**, then the client will request to the server the result through http (only one request, no polling).
+
+# TO DO
+- Implement *letters* part.
