@@ -72,4 +72,4 @@ If you go to `192.168.33.20:8080` and see the Traeffik Dashboard, you will see i
 </p>
 
 # TO DO
-- Implement *letters* part.
+- Implementing *letters* part.
