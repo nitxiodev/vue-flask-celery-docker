@@ -57,5 +57,19 @@ In this view, you can input numbers to search for the target number and send the
 - If websocket service is **on**, then will send a json message through websockets to the client.
 - If websocket service is **off**, then the client will request to the server the result through http (only one request, no polling).
 
+## Scaling services
+One of the advantages of deploying the services in docker, is the ease with which we can scale them. To do this, enter the following commands on a terminal: 
+
+```bash
+/deploy$ vagrant ssh # enter to virtual machine (this command is executed in host machine)
+ubuntu@numbersDeploy:~$  cd /opt
+ubuntu@numbersDeploy:~$ sudo docker-compose up -d --scale flaskserver=4 --scale frontend=2 --scale socketio=4 # we are scaling the api rest server 4 times, nginx server (frontend) 2 times, and socketio server 4 times in a round-robin fashion.
+```
+If you go to `192.168.33.20:8080` and see the Traeffik Dashboard, you will see in the backends part, the 10 new services!
+
+<p align="center">
+  <img src="./img/dashboard.png" width="90%">
+</p>
+
 # TO DO
 - Implement *letters* part.
