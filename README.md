@@ -61,7 +61,7 @@ In this view, you can input numbers to search for the target number and send the
 One of the advantages of deploying the services in docker, is the ease with which we can scale them. To do this, enter the following commands on a terminal: 
 
 ```bash
-/deploy$ vagrant ssh # enter to virtual machine (this command is executed in host machine)
+/deploy$ vagrant ssh # enter to virtual machine (this command is executed on the host machine)
 ubuntu@numbersDeploy:~$  cd /opt
 ubuntu@numbersDeploy:~$ sudo docker-compose up -d --scale flaskserver=4 --scale frontend=2 --scale socketio=4 # we are scaling the api rest server 4 times, nginx server (frontend) 2 times, and socketio server 4 times in a round-robin fashion.
 ```
