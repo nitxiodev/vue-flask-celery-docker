@@ -195,22 +195,19 @@ class testNumbersService(unittest.TestCase):
         try:
             self._service.solve(None, None)
         except ServiceException as f:
-            assert_that(
-                equal_to(f.errorcode == ServiceCodes.EMPTY_PARAMS))
+            assert_that(f.errorcode, equal_to(ServiceCodes.EMPTY_PARAMS))
 
     def testBadParameters(self):
         try:
             self._service.solve('house', [])
         except ServiceException as f:
-            assert_that(
-                equal_to(f.errorcode == ServiceCodes.BAD_PARAMS))
+            assert_that(f.errorcode, equal_to(ServiceCodes.BAD_PARAMS))
 
     def testBadTarget(self):
         try:
             self._service.solve(1000, [])
         except ServiceException as f:
-            assert_that(
-                equal_to(f.errorcode == ServiceCodes.BAD_PARAMS))
+            assert_that(f.errorcode, equal_to(ServiceCodes.BAD_PARAMS))
 
     def testBadNumbers(self):
         try:
