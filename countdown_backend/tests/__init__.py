@@ -213,8 +213,7 @@ class testNumbersService(unittest.TestCase):
         try:
             self._service.solve(999, [])
         except ServiceException as f:
-            assert_that(
-                equal_to(f.errorcode == ServiceCodes.FAIL))
+            assert_that(f.errorcode, equal_to(ServiceCodes.FAIL))
 
     def testOK(self):
         solution, recur, exec_time = self._service.solve(999, [10] * 6)
